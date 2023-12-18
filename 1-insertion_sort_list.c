@@ -18,6 +18,8 @@ void insertion_sort_list(listint_t **list)
 	listint_t *B;
 	listint_t *store_z;
 	int Z_n;
+	if (list == NULL)
+		return;
 
 	Z = *list;
 	while (Z != NULL)
