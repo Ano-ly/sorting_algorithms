@@ -17,9 +17,9 @@ void selection_sort(int *array, size_t size)
 	int j;
 	int temp;
 
-	/*if (size < 2){
-		print_array(array, size);
-	}*/
+	if (size < 2){
+		return;
+	}
 
 	if (array == NULL)
 	{
