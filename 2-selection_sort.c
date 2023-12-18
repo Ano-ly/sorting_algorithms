@@ -17,6 +17,10 @@ void selection_sort(int *array, size_t size)
 	int j;
 	int temp;
 
+	if ( array == NULL ){
+		return;
+	}
+
 	for (i = 0; i < (size - 1); i++)
 	{
 		j = mathmin(array, size, i);
