@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "sort.h"
 
 /**
@@ -23,22 +24,38 @@ void insertion_sort_list(listint_t **list)
 	{
 		Z_n = (int)Z->n;
 		store_z = Z->next;
+		/*printf("store_z->n: %d\n", store_z->n);*/
+		if (Z->prev != NULL)
+			/*printf("(Z->prev)->n: %d\n", (Z->prev)->n);*/
 		A = Z->prev;
-		if (A->prev)
+		if ((A != NULL) && (A->prev != NULL))
+		{
 			B = A->prev;
-		else if (!A->prev)
+			/*printf("B->n: %d\n", B->n);*/
+		}
+		else
 			B = NULL;
+		if (A != NULL)
+			/*printf("A->n: %d\n", A->n);*/
 		if ((A != NULL) && (A->n > Z_n))
 		{
 			if ((B != NULL) && (B->n < Z_n))
+			{
+				/*printf("From major function");*/
 				insert_at_middle(list, B, Z);
+			}
 			if ((B != NULL) && (B->n > Z_n))
+			{
 				iterate_backwards(list, Z);
+				/*printf("Iterated back: %d\n", Z->n);*/
+			}
 			else if (B == NULL)
+			{
 				insert_at_start(list, Z);
+			}
 		}
-		else
 		Z = store_z;
+		/*printf("Z->n: %d\n", Z->n);*/
 	}
 }
 
@@ -49,7 +66,7 @@ void insertion_sort_list(listint_t **list)
  * @Z: pointer to the current node
  * @C: pointer to the node after the current node
  *
- * Definition: This function iterates bazkwards through the list
+ * Definition: This function iterates backwards through the list
  * until NULL is reached or a node with a vaue less than the value
  * of the current node is reached. It then perfoems the insertion of the
  * node Z into the correct position, using two other functions.
@@ -62,11 +79,21 @@ void iterate_backwards(listint_t **list, listint_t *Z)
 
 	Y = Z->prev;
 	while ((Y->n > Z->n) && (Y != NULL))
+	{
 		Y = Y->prev;
-	if (Y == NULL)
-		insert_at_start(list, Z);
-	else
-		insert_at_middle(list, Y, Z);
+		if (Y != NULL)
+		{
+			/*printf("From iterate backwards");*/
+			insert_at_middle(list, Y, Z);
+		}
+		else
+		{
+			/*printf("Start: %d\n", (*list)->n);*/
+			insert_at_start(list, Z);
+			/*printf("Done");*/
+			break;
+		}
+	}
 }
 
 /**
@@ -81,14 +108,21 @@ void iterate_backwards(listint_t **list, listint_t *Z)
 void insert_at_start(listint_t **list, listint_t *Z)
 {
 	listint_t *C;
-
-	C = Z->next;
+	/*printf("list->n: %d", (*list)->n);*/
+	/*printf("Now running insert at start...\n");*/
+	if (Z->next != NULL)
+		C = Z->next;
+	if (C != NULL)
+		(Z->next)->prev = Z->prev;
 	Z->next = *list;
-	(*list)->prev =Z;
-	(Z->next)->prev = Z->prev;
-	(Z->prev)->next = C;
+	(*list)->prev = Z;
+	if (C != NULL)
+		(Z->prev)->next = C;
+	else
+		(Z->prev)->next = NULL;
 	Z->prev = NULL;
 	*list = Z;
+	print_list(*list);
 }
 
 /**
@@ -104,12 +138,18 @@ void insert_at_start(listint_t **list, listint_t *Z)
 
 void insert_at_middle(listint_t **list, listint_t *Y, listint_t *Z)
 {
-	(void)list;
+	/*printf("Now running insert at middle...\n");*/
 
-	(Z->prev)->next = Z->next;
-	(Z->next)->prev = Z->prev;
+	if (Z->next != NULL)
+	{
+		(Z->prev)->next = Z->next;
+		(Z->next)->prev = Z->prev;
+	}
+	else
+		(Z->prev)->next = NULL;
 	Z->next = Y->next;
 	Z->prev = Y;
 	(Y->next)->prev = Z;
 	Y->next = Z;
+	print_list(*list);
 }
