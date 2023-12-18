@@ -34,7 +34,7 @@ void insertion_sort_list(listint_t **list)
 			B = NULL;
 		if ((A != NULL) && (A->n > Z_n))
 		{
-			if ((B != NULL) && (B->n < Z_n))
+			if ((B != NULL) && (B->n <= Z_n))
 			{
 				insert_at_middle(list, B, Z);
 			}
