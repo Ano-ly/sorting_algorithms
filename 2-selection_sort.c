@@ -19,6 +19,9 @@ void selection_sort(int *array, size_t size)
 
 	if (array != NULL)
 	{
+		return;
+	}
+
 	for (i = 0; i < (size - 1); i++)
 	{
 		j = mathmin(array, size, i);
@@ -27,7 +30,7 @@ void selection_sort(int *array, size_t size)
 		array[j] = temp;
 		print_array(array, size);
 	}
-	}
+
 }
 
 /**
