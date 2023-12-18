@@ -24,30 +24,23 @@ void insertion_sort_list(listint_t **list)
 	{
 		Z_n = (int)Z->n;
 		store_z = Z->next;
-		/*printf("store_z->n: %d\n", store_z->n);*/
 		if (Z->prev != NULL)
-			/*printf("(Z->prev)->n: %d\n", (Z->prev)->n);*/
 		A = Z->prev;
 		if ((A != NULL) && (A->prev != NULL))
 		{
 			B = A->prev;
-			/*printf("B->n: %d\n", B->n);*/
 		}
 		else
 			B = NULL;
-		if (A != NULL)
-			/*printf("A->n: %d\n", A->n);*/
 		if ((A != NULL) && (A->n > Z_n))
 		{
 			if ((B != NULL) && (B->n < Z_n))
 			{
-				/*printf("From major function");*/
 				insert_at_middle(list, B, Z);
 			}
 			if ((B != NULL) && (B->n > Z_n))
 			{
 				iterate_backwards(list, Z);
-				/*printf("Iterated back: %d\n", Z->n);*/
 			}
 			else if (B == NULL)
 			{
@@ -55,7 +48,6 @@ void insertion_sort_list(listint_t **list)
 			}
 		}
 		Z = store_z;
-		/*printf("Z->n: %d\n", Z->n);*/
 	}
 }
 
@@ -64,7 +56,6 @@ void insertion_sort_list(listint_t **list)
  * less than the current node is found
  * @list: pointer to the list to be iterated
  * @Z: pointer to the current node
- * @C: pointer to the node after the current node
  *
  * Definition: This function iterates backwards through the list
  * until NULL is reached or a node with a vaue less than the value
