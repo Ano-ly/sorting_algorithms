@@ -22,7 +22,7 @@ void selection_sort(int *array, size_t size)
 		return;
 	}
 
-	for (i = 0; i < (size - 1); i++)
+	for (i = 0; i < (size); i++)
 	{
 		j = mathmin(array, size, i);
 		temp = array[i];
