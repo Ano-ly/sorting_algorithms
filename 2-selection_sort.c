@@ -14,7 +14,7 @@
 void selection_sort(int *array, size_t size)
 {
 	unsigned long int i;
-	int j;
+	unsigned long int j;
 	int temp;
 
 	if (array == NULL)
@@ -24,16 +24,19 @@ void selection_sort(int *array, size_t size)
 
 	if (size < 2)
 	{
-		return (-1);
+		return;
 	}
 
 	for (i = 0; i < (size - 1); i++)
 	{
 		j = mathmin(array, size, i);
-		temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-		print_array(array, size);
+		if (i != j)
+		{
+			temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+			print_array(array, size);
+		}
 	}
 
 }
@@ -52,7 +55,9 @@ void selection_sort(int *array, size_t size)
 int mathmin(int *array, size_t size, unsigned long int counter)
 {
 	int min = array[counter];
-	int temp = counter;
+	int temp = 0;
+
+	printf("I ran :3, counter is now %ld\n", counter);
 
 	for (; counter < (size); counter++)
 	{
