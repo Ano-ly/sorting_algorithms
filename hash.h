@@ -1,5 +1,5 @@
-#ifndef _HASH_H_
-#define _HASH_H_
+#ifndef HASH_H
+#define HASH_H
 /**
  * struct listint_s - Doubly linked list node
  *
@@ -13,4 +13,4 @@ typedef struct listint_s
 	struct listint_s *prev;
 	struct listint_s *next;
 } listint_t;
-#endif /* _HASH_H_ */
+#endif

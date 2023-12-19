@@ -1,5 +1,5 @@
-#ifndef _SORT_H_
-#define _SORT_H_
+#ifndef SORT_H
+#define SORT_H
 
 #include "hash.h"
 
@@ -15,4 +15,4 @@ void insert_at_middle(listint_t **list, listint_t *Y, listint_t *Z);
 void selection_sort(int *array, size_t size);
 int mathmin(int *array, size_t size, unsigned long int counter);
 
-#endif /* _SORT_H_ */
+#endif
