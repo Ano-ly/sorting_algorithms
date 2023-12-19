@@ -22,6 +22,11 @@ void selection_sort(int *array, size_t size)
 		return;
 	}
 
+	if (size < 2)
+	{
+		return;
+	}
+
 	for (i = 0; i < (size - 1); i++)
 	{
 		j = mathmin(array, size, i);
