@@ -56,12 +56,13 @@ int mathmin(int *array, size_t size, unsigned long int counter)
 			min = array[counter];
 		}
 	}
-	for (counter = temp; counter < (size); counter++)
+	counter = temp;
+	for (; counter < (size); counter++)
 	{
 		if (min == array[counter])
 		{
 			return (counter);
 		}
 	}
-	return (counter);
+	return (-1);
 }
