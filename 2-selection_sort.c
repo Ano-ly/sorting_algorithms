@@ -57,8 +57,6 @@ int mathmin(int *array, size_t size, unsigned long int counter)
 	int min = array[counter];
 	int temp = 0;
 
-	printf("I ran :3, counter is now %ld\n", counter);
-
 	for (; counter < (size); counter++)
 	{
 		if (array[counter] < min)
