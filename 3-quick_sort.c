@@ -13,7 +13,8 @@
 
 void quick_sort(int *array, size_t size)
 {
-	sort_recursive(array, 0, size - 1, size);
+	if (array != NULL)
+		sort_recursive(array, 0, size - 1, size);
 }
 
 /**
