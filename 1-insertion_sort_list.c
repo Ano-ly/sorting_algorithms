@@ -6,6 +6,7 @@
  * insertion_sort_list- This function sorts a list of integers in ascending
  * order
  * @list: pointer to the list to be sorted
+ *
  * Definition - this function uses the insertion sort algorithm to sort
  * a list of numbers in ascending order
  * Return: void
