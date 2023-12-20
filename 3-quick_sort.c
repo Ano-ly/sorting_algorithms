@@ -61,11 +61,19 @@ size_t surround_pivot(int *array, size_t start, size_t end, size_t size)
 	size_t grim;
 	int piv;
 	size_t iter;
+	size_t store_ind1;
 
 	if (start == end)
 	{
-		two_switch(array, start - 1, end, size);
-		return 0;
+		store_ind1 = array[start - 1];
+
+		if (array[start - 1] > array[end])
+		{
+			array[start - 1] = array[end];
+			array[end] = store_ind1;
+			print_array(array, size);
+		}
+		return (0);
 	}
 	grim = start - 1;
 	piv = array[end];
@@ -80,35 +88,6 @@ size_t surround_pivot(int *array, size_t start, size_t end, size_t size)
 	}
 	swap_em(array, grim + 1, end, size);
 	return (grim + 1);
-}
-
-/**
- * two_switch - switches two integers' positions based on their
- * relative size.
- * @array: array containing integers to be switched
- * @ind1: the index of first integer
- * @ind2: the index of second integer
- * @size: size of array
- *
- * Description - takes an arry as argument, and two indices, and switches
- * the values of the array at those indices based on their relative size.
- * Return: void
-*/
-
-void two_switch(int *array, size_t ind1, size_t ind2, size_t size)
-{
-	size_t store_ind1;
-
-	store_ind1 = ind1;
-
-	if (array[ind1] <= array[ind2])
-		return;
-	else
-	{
-		array[ind1] = array[ind2];
-		array[ind2] = store_ind1;
-		print_array(array, size);
-	}
 }
 
 /**
@@ -137,6 +116,7 @@ void swap_em(int *array, size_t swap1, size_t swap2, size_t size)
 /**
  * check_sorted - checks if an array has been sorted
  * @array: array to be checked
+ * @size: size of the array
  *
  * Definition - checks if an array has been sorted in ascending order
  * Return: 1 if sorted, 0 if not
