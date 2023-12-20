@@ -59,9 +59,9 @@ void sort_recursive(int *array, size_t start, size_t end, size_t size)
 size_t surround_pivot(int *array, size_t start, size_t end, size_t size)
 {
 	size_t grim;
-	int piv;
 	size_t iter;
 	size_t store_ind1;
+	int piv;
 
 	if (start == end)
 	{
